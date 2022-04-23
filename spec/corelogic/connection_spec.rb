@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe Corelogic::Connection do
+RSpec.describe Corelogic::Connection do
   subject(:connection) do
     Corelogic.container['connection']
   end
@@ -14,8 +16,8 @@ describe Corelogic::Connection do
 
     it { expect(connection).to respond_to(:get) }
 
-    it "returns an instance of `HTTP::Response`" do
-      expect(connection.get(Corelogic::API::PropertiesRepository::SEARCH_PATH)).to be_an_instance_of(HTTP::Response)
+    it 'returns an instance of `HTTP::Response`' do
+      expect(connection.get(Corelogic::API::PropertiesRepository::SEARCH_PATH)).to be_an_instance_of(Net::HTTPOK)
     end
 
     it { expect(connection.get(Corelogic::API::PropertiesRepository::SEARCH_PATH).body.to_s).to eq success_body }

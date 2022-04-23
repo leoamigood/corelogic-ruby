@@ -19,20 +19,20 @@ Gem::Specification.new do |spec|
   spec.bindir        = "bin"
 
   spec.require_paths = ["lib"]
-  spec.required_ruby_version = '~> 2.3'
+  spec.required_ruby_version = '~> 3.1'
 
   # a b c d e f g h i j k l m n o p q r s t u v w x y z
   spec.add_dependency 'dry-auto_inject'
   spec.add_dependency 'dry-container'
   spec.add_dependency 'dry-initializer'
-  spec.add_dependency 'http', '~> 3.0'
+  spec.add_dependency "net-http", "~> 0.2"
 
-  spec.add_development_dependency 'bundler', '~> 1.13'
-  spec.add_development_dependency 'factory_bot'
-  spec.add_development_dependency 'faker'
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'simplecov', '>= 0.6.2'
-  spec.add_development_dependency 'webmock'
+  spec.add_development_dependency "bundler", "~> 2.1"
+  spec.add_development_dependency "byebug", "~> 11"
+  spec.add_development_dependency "factory_bot", "~> 5.2"
+  spec.add_development_dependency "faker", "~> 2.20"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "simplecov", "~> 0.21"
+  spec.add_development_dependency "webmock", "~>3.14"
 end

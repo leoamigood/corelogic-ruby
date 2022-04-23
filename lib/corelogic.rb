@@ -27,7 +27,7 @@ module Corelogic
 
     def register!
       connection = ::Corelogic::Connection.new
-      authenticator = ::Corelogic::Authenticator.new(configuration.to_h)
+      authenticator = ::Corelogic::Authenticator.new(**configuration.to_h)
       parser_class = ::Corelogic::ResponseParser
       container.register :authenticator, -> { authenticator }
       container.register :connection, -> { connection }

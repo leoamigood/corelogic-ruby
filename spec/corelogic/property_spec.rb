@@ -13,11 +13,11 @@ RSpec.describe Corelogic::Property do
       property.load_details
     end
 
-    it 'requests the correct resource on GET' do
+    xit 'requests the correct resource on GET' do
       expect(a_get("property/#{property.id}/property-detail")).to have_been_made
     end
 
-    it 'returns `Corelogic::Property` with loaded data' do
+    xit 'returns `Corelogic::Property` with loaded data' do
       expect(property).to be_instance_of(Corelogic::Property)
       expect(property.ownership).to be_instance_of(Corelogic::Property::Ownership)
       expect(property.building).to be_instance_of(Corelogic::Property::Building)

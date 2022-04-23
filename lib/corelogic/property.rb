@@ -21,6 +21,7 @@ module Corelogic
     option :latitude, proc(&:to_f), optional: true
     option :longitude, proc(&:to_f), optional: true
     option :fipsCode, proc(&:to_s), as: :fips_code, optional: true
+    option :apn, proc(&:to_s), optional: true
     option :parcelNumber, proc(&:to_s), as: :parcel_number, optional: true
     option :parcelSequence, proc(&:to_s), as: :parcel_sequence, optional: true
     option :carrierRoute, proc(&:to_s), as: :carrier_route, optional: true

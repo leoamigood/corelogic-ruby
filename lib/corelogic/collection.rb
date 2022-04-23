@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Corelogic
   class Collection
     extend Forwardable
@@ -17,7 +19,7 @@ module Corelogic
 
       if !@raw_hash[:data].nil? && !@raw_hash[:data].empty?
         @members = @raw_hash[:data].map do |record|
-          @klass.new(record)
+          @klass.new(**record)
         end
       else
         @members = []
@@ -27,6 +29,5 @@ module Corelogic
     def to_a
       @members
     end
-
   end
 end
