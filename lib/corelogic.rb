@@ -1,12 +1,14 @@
-require "dry-container"
-require "dry-auto_inject"
-require "ostruct"
+# frozen_string_literal: true
 
-require "corelogic/connection"
-require "corelogic/authenticator"
-require "corelogic/response_parser"
-require "corelogic/property"
-require "corelogic/version"
+require 'dry-container'
+require 'dry-auto_inject'
+require 'ostruct'
+
+require 'corelogic/connection'
+require 'corelogic/authenticator'
+require 'corelogic/response_parser'
+require 'corelogic/property'
+require 'corelogic/version'
 
 module Corelogic
   class << self
@@ -50,5 +52,4 @@ module Corelogic
   end
 end
 
-require "corelogic/api/properties_repository"
-
+require 'corelogic/api/properties_repository'

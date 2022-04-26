@@ -8,7 +8,7 @@ module Corelogic
       @bearer_token = options[:bearer_token]
     end
 
-    BASE_PATH = 'https://api-prod.corelogic.com/'
+    BASE_PATH = 'https://property.corelogicapi.com/v2/properties/'
 
     def get(path, params = {})
       headers = { 'Authorization' => bearer_auth_header }
@@ -17,7 +17,7 @@ module Corelogic
       uri.query = URI.encode_www_form(params)
       http = Net::HTTP.new(uri.hostname, uri.port)
       http.use_ssl = true
-      http.set_debug_output $stdout if ENV['CORELOGIC_CONSUMER_DEBUG'].present?
+      http.set_debug_output $stdout if ENV['CORELOGIC_DEBUG'].present?
 
       http.get(uri, headers)
     end

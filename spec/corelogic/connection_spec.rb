@@ -6,12 +6,12 @@ RSpec.describe Corelogic::Connection do
   subject(:connection) do
     Corelogic.container['connection']
   end
-  let(:success_body) { json(:success_body) }
+  let(:properties_response) { json(:properties_response, fixture: './spec/fixture/properties_response.json') }
   let(:token) { SecureRandom.hex }
 
   describe '#get' do
     before do
-      stub_request(:get, /property/).to_return(body: success_body, status: 200)
+      stub_request(:get, /property/).to_return(body: properties_response, status: 200)
     end
 
     it { expect(connection).to respond_to(:get) }
@@ -20,7 +20,7 @@ RSpec.describe Corelogic::Connection do
       expect(connection.get(Corelogic::API::PropertiesRepository::SEARCH_PATH)).to be_an_instance_of(Net::HTTPOK)
     end
 
-    it { expect(connection.get(Corelogic::API::PropertiesRepository::SEARCH_PATH).body.to_s).to eq success_body }
+    it { expect(connection.get(Corelogic::API::PropertiesRepository::SEARCH_PATH).body.to_s).to eq properties_response }
   end
 
   describe '#authenticated?' do
@@ -33,5 +33,4 @@ RSpec.describe Corelogic::Connection do
       expect(connection.authenticated?).to be false
     end
   end
-
 end

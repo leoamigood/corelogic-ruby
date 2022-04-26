@@ -28,7 +28,7 @@ module Corelogic
     def self.parse_error(body)
       message = body.fetch(:message, nil) || body.fetch(:fault, {}).fetch(:faultstring, nil)
       status = body.fetch(:status, nil) || body.fetch(:fault, {}).fetch(:detail, {}).fetch(:errorcode, nil)
-      return message, status
+      [message, status]
     end
 
     def initialize(message = '', code = nil)

@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 require 'corelogic/error'
-require 'corelogic/utils'
 
 module Corelogic
   class ResponseParser
     class << self
       def perform(response)
-        response_body = response.body.blank? ? '' : Corelogic::Utils.deep_symbolize_keys(JSON.parse(response.body))
+        response_body = response.body.blank? ? '' : JSON.parse(response.body).deep_symbolize_keys
         error_filter(response.code, response_body)
       end
 

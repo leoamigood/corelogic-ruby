@@ -1,19 +1,14 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Corelogic::Collection do
   let(:records_count) { 3 }
-  let(:raw_json) { json(:success_body, count: records_count) }
+  let(:raw_json) { json(:properties_response, count: records_count, fixture: './spec/fixture/properties_response.json') }
   let(:class_name) { 'Corelogic::Property' }
 
-  context 'with empty hash' do
-    let(:raw_hash) { Hash.new }
-    subject { Corelogic::Collection.new(class_name, raw_hash) }
-
-    it { is_expected.to eq [] }
-  end
-
-  context 'with hash contains `:data` key' do
-    let(:raw_hash) { Corelogic::Utils.deep_symbolize_keys(JSON.parse(raw_json)) }
+  context 'with hash contains items key' do
+    let(:raw_hash) { JSON.parse(raw_json).deep_symbolize_keys }
     subject { Corelogic::Collection.new(class_name, raw_hash) }
 
     it { expect(subject.size).to eq records_count }
